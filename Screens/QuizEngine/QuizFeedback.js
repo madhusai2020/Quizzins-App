@@ -3,9 +3,27 @@ import PrimaryButton from '../../components/PrimaryButton';
 import {getQuizById} from '../../data/quizData';
 import {colors, radii, spacing} from '../../theme';
 
+function parseMistakes(mistakes) {
+  if (Array.isArray(mistakes)) {
+    return mistakes;
+  }
+
+  if (typeof mistakes !== 'string') {
+    return [];
+  }
+
+  try {
+    const parsedMistakes = JSON.parse(mistakes);
+    return Array.isArray(parsedMistakes) ? parsedMistakes : [];
+  } catch {
+    return [];
+  }
+}
+
 export default function QuizFeedback({navigation, route}) {
   const {quizId, questionIndex = 0, score = 0, selectedAnswer, isCorrect} =
     route.params ?? {};
+  const mistakes = parseMistakes(route.params?.mistakes);
   const quiz = getQuizById(quizId);
   const question = quiz?.questions[questionIndex];
 
@@ -24,13 +42,14 @@ export default function QuizFeedback({navigation, route}) {
 
   const handleNext = () => {
     if (isLastQuestion) {
-      navigation.navigate('QuizResult', {quizId, score});
+      navigation.navigate('QuizResult', {quizId, mistakes: JSON.stringify(mistakes), score});
       return;
     }
 
     navigation.navigate('QuizQuestion', {
       quizId,
       questionIndex: questionIndex + 1,
+      mistakes: JSON.stringify(mistakes),
       score,
     });
   };

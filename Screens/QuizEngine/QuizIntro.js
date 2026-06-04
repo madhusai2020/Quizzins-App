@@ -60,6 +60,7 @@ export default function QuizIntro({navigation, route}) {
                 navigation.navigate('QuizQuestion', {
                   quizId: quiz.id,
                   questionIndex: 0,
+                  mistakes: '[]',
                   score: 0,
                 })
               }
