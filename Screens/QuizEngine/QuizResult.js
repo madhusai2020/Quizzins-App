@@ -3,8 +3,26 @@ import PrimaryButton from '../../components/PrimaryButton';
 import {getQuizById} from '../../data/quizData';
 import {colors, radii, spacing} from '../../theme';
 
+function parseMistakes(mistakes) {
+  if (Array.isArray(mistakes)) {
+    return mistakes;
+  }
+
+  if (typeof mistakes !== 'string') {
+    return [];
+  }
+
+  try {
+    const parsedMistakes = JSON.parse(mistakes);
+    return Array.isArray(parsedMistakes) ? parsedMistakes : [];
+  } catch {
+    return [];
+  }
+}
+
 export default function QuizResult({navigation, route}) {
   const {quizId, score = 0} = route.params ?? {};
+  const mistakes = parseMistakes(route.params?.mistakes);
   const quiz = getQuizById(quizId);
 
   if (!quiz) {
@@ -47,6 +65,31 @@ export default function QuizResult({navigation, route}) {
                   ? 'Good effort. A replay can help lock in the tricky ones.'
                   : 'Keep practicing. You can replay right away and improve.'}
             </Text>
+
+            <View style={styles.reviewBox}>
+              <Text style={styles.reviewTitle}>
+                {mistakes.length === 0 ? 'No missed questions' : 'Review missed questions'}
+              </Text>
+              {mistakes.length === 0 ? (
+                <Text style={styles.reviewText}>
+                  Perfect score. You did not miss any answers in this run.
+                </Text>
+              ) : (
+                mistakes.map((mistake, index) => (
+                  <View key={`${mistake.prompt}-${index}`} style={styles.mistakeRow}>
+                    <Text style={styles.mistakeQuestion}>
+                      {index + 1}. {mistake.prompt}
+                    </Text>
+                    <Text style={styles.reviewText}>
+                      Your answer: {mistake.selectedAnswer}
+                    </Text>
+                    <Text style={styles.correctAnswerText}>
+                      Correct answer: {mistake.correctAnswer}
+                    </Text>
+                  </View>
+                ))
+              )}
+            </View>
           </View>
 
           <View style={styles.actions}>
@@ -56,6 +99,7 @@ export default function QuizResult({navigation, route}) {
                 navigation.navigate('QuizQuestion', {
                   quizId,
                   questionIndex: 0,
+                  mistakes: '[]',
                   score: 0,
                 })
               }
@@ -155,6 +199,45 @@ const styles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 26,
     marginBottom: spacing.lg,
+  },
+  reviewBox: {
+    backgroundColor: '#F8FAFC',
+    borderColor: colors.border,
+    borderRadius: radii.md,
+    borderWidth: 1,
+    marginBottom: spacing.lg,
+    padding: spacing.lg,
+  },
+  reviewTitle: {
+    color: colors.ink,
+    fontSize: 22,
+    fontWeight: '900',
+    marginBottom: spacing.sm,
+  },
+  mistakeRow: {
+    borderTopColor: colors.border,
+    borderTopWidth: 1,
+    marginTop: spacing.md,
+    paddingTop: spacing.md,
+  },
+  mistakeQuestion: {
+    color: colors.ink,
+    fontSize: 16,
+    fontWeight: '800',
+    lineHeight: 24,
+    marginBottom: spacing.xs,
+  },
+  reviewText: {
+    color: colors.muted,
+    fontSize: 16,
+    lineHeight: 24,
+  },
+  correctAnswerText: {
+    color: colors.success,
+    fontSize: 16,
+    fontWeight: '800',
+    lineHeight: 24,
+    marginTop: spacing.xs,
   },
   actions: {
     flexDirection: 'row',
