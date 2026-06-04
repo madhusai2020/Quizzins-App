@@ -20,6 +20,18 @@ function parseMistakes(mistakes) {
   }
 }
 
+function getExplanation(question, selectedAnswer) {
+  if (question.explanation) {
+    return question.explanation;
+  }
+
+  if (selectedAnswer === question.correctAnswer) {
+    return `${question.correctAnswer} is the correct answer. Nice work recognizing it.`;
+  }
+
+  return `You picked ${selectedAnswer}, but this question was looking for ${question.correctAnswer}. Replay the quiz to lock it in.`;
+}
+
 export default function QuizFeedback({navigation, route}) {
   const {quizId, questionIndex = 0, score = 0, selectedAnswer, isCorrect} =
     route.params ?? {};
@@ -39,6 +51,7 @@ export default function QuizFeedback({navigation, route}) {
   const feedbackImage = isCorrect
     ? 'https://st2.depositphotos.com/1605004/6196/v/450/depositphotos_61961463-stock-illustration-comic-book-explosion-with-text.jpg'
     : 'https://img.freepik.com/premium-vector/comic-speech-bubble-with-word-oops_530597-634.jpg';
+  const explanation = getExplanation(question, selectedAnswer);
 
   const handleNext = () => {
     if (isLastQuestion) {
@@ -77,6 +90,11 @@ export default function QuizFeedback({navigation, route}) {
               source={{uri: feedbackImage}}
               style={styles.feedbackImage}
             />
+          </View>
+
+          <View style={styles.explanationBox}>
+            <Text style={styles.explanationTitle}>Quick explanation</Text>
+            <Text style={styles.explanationText}>{explanation}</Text>
           </View>
 
           <PrimaryButton
@@ -169,5 +187,24 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     marginBottom: spacing.lg,
     marginTop: spacing.sm,
+  },
+  explanationBox: {
+    backgroundColor: '#F8FAFC',
+    borderColor: colors.border,
+    borderRadius: radii.md,
+    borderWidth: 1,
+    marginBottom: spacing.lg,
+    padding: spacing.lg,
+  },
+  explanationTitle: {
+    color: colors.primaryDark,
+    fontSize: 16,
+    fontWeight: '900',
+    marginBottom: spacing.xs,
+  },
+  explanationText: {
+    color: colors.ink,
+    fontSize: 17,
+    lineHeight: 25,
   },
 });
