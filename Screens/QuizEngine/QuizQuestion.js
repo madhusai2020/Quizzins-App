@@ -4,8 +4,26 @@ import {colors, radii, spacing} from '../../theme';
 
 const answerColors = ['#FEE2E2', '#DCFCE7', '#DBEAFE', '#FEF3C7'];
 
+function parseMistakes(mistakes) {
+  if (Array.isArray(mistakes)) {
+    return mistakes;
+  }
+
+  if (typeof mistakes !== 'string') {
+    return [];
+  }
+
+  try {
+    const parsedMistakes = JSON.parse(mistakes);
+    return Array.isArray(parsedMistakes) ? parsedMistakes : [];
+  } catch {
+    return [];
+  }
+}
+
 export default function QuizQuestion({navigation, route}) {
   const {quizId, questionIndex = 0, score = 0} = route.params ?? {};
+  const mistakes = parseMistakes(route.params?.mistakes);
   const quiz = getQuizById(quizId);
   const question = quiz?.questions[questionIndex];
 
@@ -22,9 +40,21 @@ export default function QuizQuestion({navigation, route}) {
 
   const handleAnswer = (answer) => {
     const isCorrect = answer === question.correctAnswer;
+    const nextMistakes = isCorrect
+      ? mistakes
+      : [
+          ...mistakes,
+          {
+            correctAnswer: question.correctAnswer,
+            prompt: question.prompt,
+            selectedAnswer: answer,
+          },
+        ];
+
     navigation.navigate('QuizFeedback', {
       quizId,
       questionIndex,
+      mistakes: JSON.stringify(nextMistakes),
       score: isCorrect ? score + 5 : score,
       selectedAnswer: answer,
       isCorrect,
