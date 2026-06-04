@@ -1,10 +1,16 @@
-
+import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import {StatusBar} from 'expo-status-bar';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Home from './Home'
 import ResS from './Screens/SpanishQuiz/ResultSpanish'
 import ResultScience from './Screens/ScienceQuiz/ResultScience'
 import Catalog from'./Catalog'
+import QuizFeedback from './Screens/QuizEngine/QuizFeedback'
+import QuizIntro from './Screens/QuizEngine/QuizIntro'
+import QuizQuestion from './Screens/QuizEngine/QuizQuestion'
+import QuizResult from './Screens/QuizEngine/QuizResult'
 import Quizzes from './Screens/SpanishQuiz/Quizzes'
 import Game from './Screens/SpanishQuiz/Game'
 import WrongScreen from './Screens/SpanishQuiz/WrongScreen'
@@ -95,8 +101,10 @@ const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-     <Stack.Navigator initialRouteName='Home'screenOptions={{headerShown:true}}>
+    <SafeAreaProvider>
+      <StatusBar style="auto" />
+      <NavigationContainer>
+     <Stack.Navigator initialRouteName='Home' screenOptions={{headerShown:true}}>
        <Stack.Screen name="Home" component={Home}
        options={{ 
          title: '⸮Quizzin?' ,headerTitleAlign: 'center'
@@ -107,6 +115,25 @@ export default function App() {
        </Stack.Screen>
        <Stack.Screen name="Catalog" component={Catalog}
         options={{ title: 'Catalog' ,headerTitleAlign: 'center'}}>
+
+       </Stack.Screen>
+       <Stack.Screen name="QuizIntro" component={QuizIntro}
+        options={({route}) => ({
+          title: route.params?.quizId ? 'Quiz Details' : 'Quiz',
+          headerTitleAlign: 'center',
+        })}>
+
+       </Stack.Screen>
+       <Stack.Screen name="QuizQuestion" component={QuizQuestion}
+        options={{ title: 'Question' ,headerTitleAlign: 'center'}}>
+
+       </Stack.Screen>
+       <Stack.Screen name="QuizFeedback" component={QuizFeedback}
+        options={{ title: 'Answer' ,headerTitleAlign: 'center'}}>
+
+       </Stack.Screen>
+       <Stack.Screen name="QuizResult" component={QuizResult}
+        options={{ title: 'Results' ,headerTitleAlign: 'center'}}>
 
        </Stack.Screen>
        <Stack.Screen name="Quizzes" component={Quizzes}
@@ -216,11 +243,10 @@ export default function App() {
 
 
      </Stack.Navigator>
-    </NavigationContainer>
+      </NavigationContainer>
+    </SafeAreaProvider>
     
 
     
   );
 }
-
-

@@ -1,5 +1,16 @@
 # Quizzins: A Quiz Application built using React-Native JavaScript
 
+## Development
+
+This project is being upgraded to Expo SDK 56. After installing Node.js with npm available, run:
+
+```sh
+npm install
+npx expo install --fix
+npx expo-doctor@latest
+npx expo start
+```
+
 ## 1) 9 different categories that range from academics to leisure
   - Math, Science, Fruits, History, Basketball, Spanish, Language Arts, Movies, and Coding
   - Each category has at least 4 questions

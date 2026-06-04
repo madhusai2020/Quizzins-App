@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "Quizzins",
+    "slug": "quizzins-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "scheme": "quizzins",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.quizzins.app"
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
