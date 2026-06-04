@@ -1,117 +1,156 @@
-import React  from 'react'
-import { Text, View, TouchableOpacity,TextInput, ScrollView} from 'react-native'
+import React, {useMemo, useState} from 'react';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
+import PrimaryButton from './components/PrimaryButton';
+import {quizzes} from './data/quizData';
+import {colors, radii, spacing} from './theme';
 
+export default function Catalog({navigation}) {
+  const [searchText, setSearchText] = useState('');
 
+  const filteredQuizzes = useMemo(() => {
+    const query = searchText.trim().toLowerCase();
 
-export default function Catalog(props) {
-    
-        return (
-            <View style={{backgroundColor:'#87CEEB', flex:1}}>
-                <ScrollView>
-                <Text style={{textAlign:"center", fontSize: 50, marginBottom:30, color:"blue", marginTop:10}}>Catalog</Text>
-                <TextInput style={{borderWidth:2, width:300, alignSelf:"center", marginBottom:20, paddingLeft:20, borderRadius:15, height:30, color:'black'}} placeholder="Search"></TextInput>
-                <View style={{flexDirection:"row", marginBottom:10, borderWidth: 1,
-    borderColor: "thistle",
-    borderRadius: 50, justifyContent:"center"}}>
-                    <View>
-                <Text style={{fontSize:20}}>1) Spanish</Text>
-                </View>
-                <TouchableOpacity style={{paddingVertical:6,
-  paddingHorizontal:16,
-  borderRadius:30, width:80, height:30,
-  backgroundColor:"lime", color:"black", fontSize:20, marginLeft:130}} onPress={()=>props.navigation.navigate('Quizzes')} ><Text style={{alignSelf:'center'}}>View</Text></TouchableOpacity>
-             </View>
-             <View style={{flexDirection:"row", marginBottom:10, borderWidth: 1,
-    borderColor: "thistle",
-    borderRadius: 50, justifyContent:"center"}}>
-                    <View>
-                <Text style={{fontSize:20}}>2) Math</Text>
-                </View>
-                <TouchableOpacity style={{paddingVertical:6,
-  paddingHorizontal:16,
-  borderRadius:30, width:80, height:30,
-  backgroundColor:"lime", color:"black", fontSize:20, marginLeft:155}} onPress={()=>props.navigation.navigate('MathQuiz')} ><Text style={{alignSelf:'center'}}>View</Text></TouchableOpacity>
-             </View>
-             <View style={{flexDirection:"row", marginBottom:10, borderWidth: 1,
-    borderColor: "thistle",
-    borderRadius: 50, justifyContent:"center"}}>
-                    <View>
-                <Text style={{fontSize:20}}>3) Science</Text>
-                </View>
-                <TouchableOpacity style={{paddingVertical:6,
-  paddingHorizontal:16,
-  borderRadius:30, width:80, height:30,
-  backgroundColor:"lime", color:"black", fontSize:20, marginLeft:130}} onPress={()=>props.navigation.navigate('ScienceQuiz')} ><Text style={{alignSelf:'center'}}>View</Text></TouchableOpacity>
-             </View>
-             <View style={{flexDirection:"row", marginBottom:10, borderWidth: 1,
-    borderColor: "thistle",
-    borderRadius: 50, justifyContent:"center"}}>
-                    <View>
-                <Text style={{fontSize:20}}>4) Language Arts</Text>
-                </View>
-                <TouchableOpacity style={{paddingVertical:6,
-  paddingHorizontal:16,
-  borderRadius:30, width:80, height:30,
-  backgroundColor:"lime", color:"black", fontSize:20, marginLeft:70}} onPress={()=>props.navigation.navigate('LanguageArts')} ><Text style={{alignSelf:'center'}}>View</Text></TouchableOpacity>
-             </View>
-             <View style={{flexDirection:"row", marginBottom:10, borderWidth: 1,
-    borderColor: "thistle",
-    borderRadius: 50, justifyContent:"center"}}>
-                    <View>
-                <Text style={{fontSize:20}}>5) Coding</Text>
-                </View>
-                <TouchableOpacity style={{paddingVertical:6,
-  paddingHorizontal:16,
-  borderRadius:30, width:80, height:30,
-  backgroundColor:"lime", color:"black", fontSize:20, marginLeft:135}} onPress={()=>props.navigation.navigate('CodingQuiz')} ><Text style = {{alignSelf: "center"}}>View</Text></TouchableOpacity>
-             </View>
-             <View style={{flexDirection:"row", marginBottom:10, borderWidth: 1,
-    borderColor: "thistle",
-    borderRadius: 50, justifyContent:"center"}}>
-                    <View>
-                <Text style={{fontSize:20}}>6) Basketball</Text>
-                </View>
-                <TouchableOpacity style={{paddingVertical:6,
-  paddingHorizontal:16,
-  borderRadius:30, width:80, height:30,
-  backgroundColor:"lime", color:"black", fontSize:20, marginLeft:105}} onPress={()=>props.navigation.navigate('BasketballQuiz')} ><Text style={{alignSelf:'center'}}>View</Text></TouchableOpacity>
-             </View>
-             <View style={{flexDirection:"row", marginBottom:10, borderWidth: 1,
-    borderColor: "thistle",
-    borderRadius: 50, justifyContent:"center"}}>
-                    <View>
-                <Text style={{fontSize:20}}>7) History</Text>
-                </View>
-                <TouchableOpacity style={{paddingVertical:6,
-  paddingHorizontal:16,
-  borderRadius:30, width:80, height:30,
-  backgroundColor:"lime", color:"black", fontSize:20, marginLeft:135}} onPress={()=>props.navigation.navigate('HistoryQuiz')} ><Text style={{alignSelf:'center'}}>View</Text></TouchableOpacity>
-             </View>
-             <View style={{flexDirection:"row", marginBottom:10, borderWidth: 1,
-    borderColor: "thistle",
-    borderRadius: 50, justifyContent:"center"}}>
-                    <View>
-                <Text style={{fontSize:20}}>8) Movies</Text>
-                </View>
-                <TouchableOpacity style={{paddingVertical:6,
-  paddingHorizontal:16,
-  borderRadius:30, width:80, height:30,
-  backgroundColor:"lime", color:"black", fontSize:20, marginLeft:135}} onPress={()=>props.navigation.navigate('MoviesQuiz')} ><Text style={{alignSelf:'center'}}>View</Text></TouchableOpacity>
-             </View>
-             <View style={{flexDirection:"row", marginBottom:10, borderWidth: 1,
-    borderColor: "thistle",
-    borderRadius: 50, justifyContent:"center"}}>
-                    <View>
-                <Text style={{fontSize:20}}>9) Fruits</Text>
-                </View>
-                <TouchableOpacity style={{paddingVertical:6,
-  paddingHorizontal:16,
-  borderRadius:30, width:80, height:30,
-  backgroundColor:"lime", color:"black", fontSize:20, marginLeft:150}} onPress={()=>props.navigation.navigate('FruitsQuiz')} ><Text style={{alignSelf:'center'}}>View</Text></TouchableOpacity>
-             </View>
-             </ScrollView>
-            </View>
-            
-        )
+    if (!query) {
+      return quizzes;
     }
 
+    return quizzes.filter((quiz) => quiz.title.toLowerCase().includes(query));
+  }, [searchText]);
+
+  return (
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.content}>
+        <View style={styles.header}>
+          <Text style={styles.title}>Catalog</Text>
+          <Text style={styles.subtitle}>Choose a quiz and start practicing.</Text>
+          <TextInput
+            accessibilityLabel="Search quizzes"
+            style={styles.search}
+            placeholder="Search quizzes"
+            placeholderTextColor={colors.muted}
+            value={searchText}
+            onChangeText={setSearchText}
+            returnKeyType="search"
+          />
+        </View>
+
+        <View style={styles.list}>
+          {filteredQuizzes.map((quiz, index) => (
+            <View key={quiz.id} style={styles.row}>
+              <View style={styles.quizCopy}>
+                <Text style={styles.quizName}>
+                  {index + 1}) {quiz.title}
+                </Text>
+                <Text style={styles.quizDescription}>
+                  {quiz.questions.length} questions - {quiz.questions.length * 5} points
+                </Text>
+              </View>
+              <PrimaryButton
+                accessibilityLabel={`View ${quiz.title} quiz`}
+                onPress={() => navigation.navigate('QuizIntro', {quizId: quiz.id})}
+                style={styles.viewButton}
+              >
+                View
+              </PrimaryButton>
+            </View>
+          ))}
+
+          {filteredQuizzes.length === 0 ? (
+            <Text style={styles.emptyText}>No quizzes found.</Text>
+          ) : null}
+        </View>
+      </ScrollView>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#87CEEB',
+  },
+  content: {
+    alignItems: 'center',
+    padding: spacing.lg,
+    paddingBottom: spacing.xxl,
+  },
+  header: {
+    alignItems: 'center',
+    maxWidth: 720,
+    width: '100%',
+  },
+  title: {
+    color: '#034EA2',
+    fontSize: 44,
+    fontWeight: '800',
+    marginTop: spacing.sm,
+    textAlign: 'center',
+  },
+  subtitle: {
+    color: colors.ink,
+    fontSize: 18,
+    marginBottom: spacing.md,
+    marginTop: spacing.xs,
+    textAlign: 'center',
+  },
+  search: {
+    backgroundColor: colors.panel,
+    borderColor: '#326789',
+    borderRadius: radii.md,
+    borderWidth: 2,
+    color: colors.ink,
+    fontSize: 16,
+    height: 46,
+    marginBottom: spacing.lg,
+    maxWidth: 420,
+    paddingHorizontal: spacing.md,
+    width: '100%',
+  },
+  list: {
+    gap: spacing.sm,
+    maxWidth: 980,
+    width: '100%',
+  },
+  row: {
+    alignItems: 'center',
+    backgroundColor: colors.panel,
+    borderColor: '#7AB8D4',
+    borderRadius: radii.md,
+    borderWidth: 1,
+    flexDirection: 'row',
+    gap: spacing.md,
+    justifyContent: 'space-between',
+    minHeight: 68,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.sm,
+  },
+  quizCopy: {
+    flex: 1,
+  },
+  quizName: {
+    color: colors.ink,
+    fontSize: 20,
+    fontWeight: '800',
+  },
+  quizDescription: {
+    color: colors.muted,
+    fontSize: 14,
+    fontWeight: '700',
+    marginTop: 3,
+  },
+  viewButton: {
+    minWidth: 92,
+  },
+  emptyText: {
+    color: colors.ink,
+    fontSize: 18,
+    marginTop: spacing.lg,
+    textAlign: 'center',
+  },
+});

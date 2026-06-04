@@ -1,0 +1,276 @@
+export const quizzes = [
+  {
+    id: 'spanish',
+    title: 'Spanish',
+    description: 'Practice everyday Spanish words and phrases.',
+    accentColor: '#BF92E4',
+    backgroundColor: '#F1E5FF',
+    imageUrl: 'https://t3.ftcdn.net/jpg/02/09/65/14/360_F_209651427_Moux8Hkey15wtMbtLymbPPrdrLhm58fH.jpg',
+    questions: [
+      {
+        prompt: 'How do you say hello in Spanish?',
+        answers: ['Hello', 'Bonjour', 'Hola', 'Hi'],
+        correctAnswer: 'Hola',
+      },
+      {
+        prompt: 'How do you say goodbye in Spanish?',
+        answers: ['Adios', 'Gracias', 'Por favor', 'Perdon'],
+        correctAnswer: 'Adios',
+      },
+      {
+        prompt: 'What does gracias mean?',
+        answers: ['Please', 'Thanks', 'Friend', 'Good morning'],
+        correctAnswer: 'Thanks',
+      },
+      {
+        prompt: 'How do you say friend in Spanish?',
+        answers: ['Amigo', 'Casa', 'Libro', 'Comida'],
+        correctAnswer: 'Amigo',
+      },
+    ],
+  },
+  {
+    id: 'math',
+    title: 'Math',
+    description: 'Solve quick arithmetic and reasoning problems.',
+    accentColor: '#7C3AED',
+    backgroundColor: '#EFE7FF',
+    imageUrl: 'https://selfsufficientkids.com/wp-content/uploads/2017/07/multiplication-math-facts.jpg',
+    questions: [
+      {
+        prompt: 'What is 10 x 10?',
+        answers: ['200', '100', '10x10', '20'],
+        correctAnswer: '100',
+      },
+      {
+        prompt: 'What is 6 + 7?',
+        answers: ['11', '12', '13', '14'],
+        correctAnswer: '13',
+      },
+      {
+        prompt: 'What is 4 squared?',
+        answers: ['8', '12', '16', '20'],
+        correctAnswer: '16',
+      },
+      {
+        prompt: 'What is 45 divided by 5?',
+        answers: ['7', '8', '9', '10'],
+        correctAnswer: '9',
+      },
+    ],
+  },
+  {
+    id: 'science',
+    title: 'Science',
+    description: 'Explore nature, chemistry, and general science facts.',
+    accentColor: '#0284C7',
+    backgroundColor: '#E0F2FE',
+    imageUrl: 'https://media.istockphoto.com/id/176982445/photo/ruby-xl.jpg?s=612x612&w=0&k=20&c=XjNZgXXR6ipGOVkSsV7UNnBbEaD48VbkB3wyKg-ArAk=',
+    questions: [
+      {
+        prompt: 'What is the hardest natural material in the world?',
+        answers: ['Diamond', 'Emerald', 'Ruby', 'Sapphire'],
+        correctAnswer: 'Diamond',
+      },
+      {
+        prompt: 'How many planets are in our solar system?',
+        answers: ['6', '7', '8', '9'],
+        correctAnswer: '8',
+      },
+      {
+        prompt: 'At what temperature does water freeze in Celsius?',
+        answers: ['-40', '0', '32', '100'],
+        correctAnswer: '0',
+      },
+      {
+        prompt: 'Which animal is known for laying eggs and quacking?',
+        answers: ['Dog', 'Cat', 'Duck', 'Sheep'],
+        correctAnswer: 'Duck',
+      },
+    ],
+  },
+  {
+    id: 'languageArts',
+    title: 'Language Arts',
+    description: 'Review vocabulary, grammar, and word meaning.',
+    accentColor: '#BE123C',
+    backgroundColor: '#FFE4E6',
+    imageUrl: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=900&q=80',
+    questions: [
+      {
+        prompt: 'Which word is a synonym for quiet?',
+        answers: ['Silent', 'Noisy', 'Roaring', 'Loud'],
+        correctAnswer: 'Silent',
+      },
+      {
+        prompt: 'Which word is an antonym for hot?',
+        answers: ['Warm', 'Cold', 'Boiling', 'Sunny'],
+        correctAnswer: 'Cold',
+      },
+      {
+        prompt: 'Which sentence uses punctuation correctly?',
+        answers: ['Where are you', 'Where are you?', 'Where are you.', 'Where are you!'],
+        correctAnswer: 'Where are you?',
+      },
+      {
+        prompt: 'Which word is a noun?',
+        answers: ['Run', 'Happy', 'Book', 'Quickly'],
+        correctAnswer: 'Book',
+      },
+    ],
+  },
+  {
+    id: 'coding',
+    title: 'Coding',
+    description: 'Test basic programming and React Native knowledge.',
+    accentColor: '#475569',
+    backgroundColor: '#E2E8F0',
+    imageUrl: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=80',
+    questions: [
+      {
+        prompt: 'Which language is commonly used with React Native?',
+        answers: ['JavaScript', 'HTML only', 'SQL', 'Swift only'],
+        correctAnswer: 'JavaScript',
+      },
+      {
+        prompt: 'Which React Native component makes a tappable area?',
+        answers: ['ViewBox', 'TouchableOpacity', 'TextArea', 'ScreenButton'],
+        correctAnswer: 'TouchableOpacity',
+      },
+      {
+        prompt: 'Which symbol starts a JavaScript array?',
+        answers: ['{', '[', '<', '('],
+        correctAnswer: '[',
+      },
+      {
+        prompt: 'What does a prop do in React?',
+        answers: ['Stores images', 'Passes data to a component', 'Deletes code', 'Starts the app store'],
+        correctAnswer: 'Passes data to a component',
+      },
+    ],
+  },
+  {
+    id: 'basketball',
+    title: 'Basketball',
+    description: 'Check your basketball terms and rules.',
+    accentColor: '#EA580C',
+    backgroundColor: '#FFEDD5',
+    imageUrl: 'https://media.istockphoto.com/id/1159659055/photo/high-school-basketball-game.jpg?s=612x612&w=0&k=20&c=eqc4czKTXf_ACQaSawBs_Tuc8Fcr4sHSOr6mKVUuoMc=',
+    questions: [
+      {
+        prompt: 'What is passing a basketball to a teammate who scores called?',
+        answers: ['Pass', 'Basketball pass', 'Assist', 'Pass ball'],
+        correctAnswer: 'Assist',
+      },
+      {
+        prompt: 'How many points is a free throw worth?',
+        answers: ['1', '2', '3', '4'],
+        correctAnswer: '1',
+      },
+      {
+        prompt: 'How many players from one team are usually on the court?',
+        answers: ['4', '5', '6', '7'],
+        correctAnswer: '5',
+      },
+      {
+        prompt: 'What line is used for long-distance three-point shots?',
+        answers: ['Free throw line', 'Three-point line', 'Half-court line', 'Baseline'],
+        correctAnswer: 'Three-point line',
+      },
+    ],
+  },
+  {
+    id: 'history',
+    title: 'History',
+    description: 'Review major events and historical knowledge.',
+    accentColor: '#92400E',
+    backgroundColor: '#FEF3C7',
+    imageUrl: 'https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=900&q=80',
+    questions: [
+      {
+        prompt: 'Which war was fought between the North and South in the United States?',
+        answers: ['Civil War', 'World War I', 'World War II', 'Revolutionary War'],
+        correctAnswer: 'Civil War',
+      },
+      {
+        prompt: 'Who was the first president of the United States?',
+        answers: ['Abraham Lincoln', 'George Washington', 'John Adams', 'Thomas Jefferson'],
+        correctAnswer: 'George Washington',
+      },
+      {
+        prompt: 'The Declaration of Independence was signed in what year?',
+        answers: ['1492', '1776', '1865', '1945'],
+        correctAnswer: '1776',
+      },
+      {
+        prompt: 'Ancient pyramids are strongly associated with which civilization?',
+        answers: ['Egyptian', 'Roman', 'Greek', 'Mayan'],
+        correctAnswer: 'Egyptian',
+      },
+    ],
+  },
+  {
+    id: 'movies',
+    title: 'Movies',
+    description: 'Try questions about popular films and movie facts.',
+    accentColor: '#7F1D1D',
+    backgroundColor: '#FEE2E2',
+    imageUrl: 'https://images2.alphacoders.com/131/1315111.jpg',
+    questions: [
+      {
+        prompt: 'What is the highest grossing movie of all time?',
+        answers: ['Avengers: Endgame', 'Avatar', 'Avengers: Infinity War', 'Titanic'],
+        correctAnswer: 'Avatar',
+      },
+      {
+        prompt: 'Which movie features the character Simba?',
+        answers: ['Toy Story', 'The Lion King', 'Frozen', 'Cars'],
+        correctAnswer: 'The Lion King',
+      },
+      {
+        prompt: 'Which movie is about toys that come to life?',
+        answers: ['Toy Story', 'Finding Nemo', 'Shrek', 'Moana'],
+        correctAnswer: 'Toy Story',
+      },
+      {
+        prompt: 'Where were many scenes from The Lord of the Rings filmed?',
+        answers: ['Iceland', 'Ireland', 'New Zealand', 'Australia'],
+        correctAnswer: 'New Zealand',
+      },
+    ],
+  },
+  {
+    id: 'fruits',
+    title: 'Fruits',
+    description: 'Identify fruits and simple food facts.',
+    accentColor: '#15803D',
+    backgroundColor: '#DCFCE7',
+    imageUrl: 'https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=900&q=80',
+    questions: [
+      {
+        prompt: 'Which fruit is yellow and curved?',
+        answers: ['Apple', 'Banana', 'Grape', 'Orange'],
+        correctAnswer: 'Banana',
+      },
+      {
+        prompt: 'Which fruit is known for having seeds on the outside?',
+        answers: ['Strawberry', 'Watermelon', 'Mango', 'Peach'],
+        correctAnswer: 'Strawberry',
+      },
+      {
+        prompt: 'Which fruit is often used to make lemonade?',
+        answers: ['Lemon', 'Pear', 'Plum', 'Cherry'],
+        correctAnswer: 'Lemon',
+      },
+      {
+        prompt: 'Which fruit is commonly red, green, or yellow and grows on trees?',
+        answers: ['Apple', 'Blueberry', 'Kiwi', 'Pineapple'],
+        correctAnswer: 'Apple',
+      },
+    ],
+  },
+];
+
+export function getQuizById(quizId) {
+  return quizzes.find((quiz) => quiz.id === quizId);
+}
