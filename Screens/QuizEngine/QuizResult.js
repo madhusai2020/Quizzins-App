@@ -1,4 +1,4 @@
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 import PrimaryButton from '../../components/PrimaryButton';
 import {getQuizById} from '../../data/quizData';
 import {colors, radii, spacing} from '../../theme';
@@ -19,22 +19,35 @@ export default function QuizResult({navigation, route}) {
   const percentage = Math.round((score / totalPoints) * 100);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: quiz.backgroundColor}]}>
       <ScrollView contentContainerStyle={styles.content}>
-        <View style={styles.card}>
-          <Text style={styles.eyebrow}>Quiz Complete</Text>
-          <Text style={styles.title}>{quiz.title} Results</Text>
-          <Text style={styles.score}>
-            {score} / {totalPoints}
-          </Text>
-          <Text style={styles.percentage}>{percentage}%</Text>
-          <Text style={styles.bodyText}>
-            {percentage >= 80
-              ? 'Excellent work. You really know this topic.'
-              : percentage >= 50
-                ? 'Good effort. A replay can help lock in the tricky ones.'
-                : 'Keep practicing. You can replay right away and improve.'}
-          </Text>
+        <View style={[styles.card, {borderColor: quiz.accentColor}]}>
+          <View style={[styles.scorePanel, {backgroundColor: quiz.accentColor}]}>
+            <View style={styles.scoreCopy}>
+              <Text style={styles.eyebrow}>Final Score</Text>
+              <Text style={styles.title}>{quiz.title} Results</Text>
+              <Text style={styles.score}>
+                {score} / {totalPoints}
+              </Text>
+              <Text style={styles.percentage}>{percentage}%</Text>
+            </View>
+            <Image
+              accessibilityIgnoresInvertColors
+              resizeMode="cover"
+              source={{uri: quiz.imageUrl}}
+              style={styles.resultImage}
+            />
+          </View>
+
+          <View style={styles.messageArea}>
+            <Text style={styles.bodyText}>
+              {percentage >= 80
+                ? 'Excellent work. You really know this topic.'
+                : percentage >= 50
+                  ? 'Good effort. A replay can help lock in the tricky ones.'
+                  : 'Keep practicing. You can replay right away and improve.'}
+            </Text>
+          </View>
 
           <View style={styles.actions}>
             <PrimaryButton
@@ -83,15 +96,33 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: colors.panel,
-    borderColor: colors.border,
     borderRadius: radii.lg,
-    borderWidth: 1,
-    maxWidth: 620,
-    padding: spacing.xl,
+    borderWidth: 2,
+    maxWidth: 780,
+    overflow: 'hidden',
     width: '100%',
   },
+  scorePanel: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: spacing.lg,
+    padding: spacing.xl,
+  },
+  scoreCopy: {
+    flex: 1,
+    minWidth: 260,
+  },
+  resultImage: {
+    borderColor: '#FFFFFF',
+    borderRadius: radii.md,
+    borderWidth: 3,
+    flex: 1,
+    height: 220,
+    minWidth: 260,
+  },
   eyebrow: {
-    color: colors.accent,
+    color: '#FFFFFF',
     fontSize: 14,
     fontWeight: '800',
     letterSpacing: 0,
@@ -99,21 +130,25 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   title: {
-    color: colors.ink,
+    color: '#FFFFFF',
     fontSize: 34,
-    fontWeight: '800',
+    fontWeight: '900',
   },
   score: {
-    color: colors.primaryDark,
+    color: '#FFFFFF',
     fontSize: 52,
     fontWeight: '900',
     marginTop: spacing.lg,
   },
   percentage: {
-    color: colors.muted,
+    color: '#FFFFFF',
     fontSize: 24,
     fontWeight: '800',
     marginBottom: spacing.md,
+  },
+  messageArea: {
+    paddingHorizontal: spacing.xl,
+    paddingTop: spacing.xl,
   },
   bodyText: {
     color: colors.ink,
@@ -125,5 +160,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: spacing.md,
+    padding: spacing.xl,
+    paddingTop: 0,
   },
 });

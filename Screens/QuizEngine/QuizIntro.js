@@ -18,32 +18,36 @@ export default function QuizIntro({navigation, route}) {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: quiz.backgroundColor}]}>
       <ScrollView contentContainerStyle={styles.content}>
-        <View style={styles.card}>
-          <Image
-            accessibilityIgnoresInvertColors
-            resizeMode="cover"
-            source={{uri: quiz.imageUrl}}
-            style={styles.heroImage}
-          />
-          <Text style={styles.eyebrow}>Quiz Details</Text>
-          <Text style={styles.title}>{quiz.title} Quiz</Text>
-          <Text style={styles.description}>{quiz.description}</Text>
+        <View style={[styles.card, {borderColor: quiz.accentColor}]}>
+          <View style={[styles.heroBand, {backgroundColor: quiz.accentColor}]}>
+            <View style={styles.heroCopy}>
+              <Text style={styles.eyebrow}>Quiz Details</Text>
+              <Text style={styles.title}>{quiz.title} Quiz</Text>
+              <Text style={styles.description}>{quiz.description}</Text>
+            </View>
+            <Image
+              accessibilityIgnoresInvertColors
+              resizeMode="cover"
+              source={{uri: quiz.imageUrl}}
+              style={styles.heroImage}
+            />
+          </View>
 
           <View style={styles.metaRow}>
-            <View style={styles.metaItem}>
+            <View style={[styles.metaItem, {borderColor: quiz.accentColor}]}>
               <Text style={styles.metaValue}>{quiz.questions.length}</Text>
               <Text style={styles.metaLabel}>Questions</Text>
             </View>
-            <View style={styles.metaItem}>
+            <View style={[styles.metaItem, {borderColor: quiz.accentColor}]}>
               <Text style={styles.metaValue}>{quiz.questions.length * 5}</Text>
               <Text style={styles.metaLabel}>Points</Text>
             </View>
           </View>
 
           <View style={styles.rules}>
-            <Text style={styles.rulesTitle}>Rules</Text>
+            <Text style={[styles.rulesTitle, {color: quiz.accentColor}]}>Rules</Text>
             <Text style={styles.ruleText}>Answer each question without outside help.</Text>
             <Text style={styles.ruleText}>Each correct answer is worth 5 points.</Text>
             <Text style={styles.ruleText}>You can replay the quiz from the result screen.</Text>
@@ -96,39 +100,52 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: colors.panel,
-    borderColor: colors.border,
     borderRadius: radii.lg,
-    borderWidth: 1,
-    maxWidth: 760,
+    borderWidth: 2,
+    maxWidth: 920,
     overflow: 'hidden',
     width: '100%',
   },
+  heroBand: {
+    alignItems: 'stretch',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: spacing.lg,
+    padding: spacing.lg,
+  },
+  heroCopy: {
+    flex: 1,
+    justifyContent: 'center',
+    minWidth: 280,
+  },
   heroImage: {
-    height: 240,
-    width: '100%',
+    borderColor: '#FFFFFF',
+    borderRadius: radii.md,
+    borderWidth: 3,
+    flex: 1,
+    height: 260,
+    minWidth: 280,
   },
   eyebrow: {
-    color: colors.accent,
+    color: '#FFFFFF',
     fontSize: 14,
     fontWeight: '800',
     letterSpacing: 0,
     marginTop: spacing.lg,
-    paddingHorizontal: spacing.lg,
     textTransform: 'uppercase',
   },
   title: {
-    color: colors.ink,
-    fontSize: 34,
-    fontWeight: '800',
+    color: '#FFFFFF',
+    fontSize: 42,
+    fontWeight: '900',
     marginTop: spacing.xs,
-    paddingHorizontal: spacing.lg,
   },
   description: {
-    color: colors.muted,
-    fontSize: 18,
-    lineHeight: 26,
+    color: '#FFFFFF',
+    fontSize: 20,
+    fontWeight: '700',
+    lineHeight: 28,
     marginTop: spacing.sm,
-    paddingHorizontal: spacing.lg,
   },
   metaRow: {
     flexDirection: 'row',
@@ -155,7 +172,12 @@ const styles = StyleSheet.create({
     marginTop: spacing.xs,
   },
   rules: {
-    paddingHorizontal: spacing.lg,
+    backgroundColor: '#FFFDF7',
+    borderColor: colors.border,
+    borderRadius: radii.md,
+    borderWidth: 1,
+    marginHorizontal: spacing.lg,
+    padding: spacing.lg,
   },
   rulesTitle: {
     color: colors.ink,
@@ -176,4 +198,3 @@ const styles = StyleSheet.create({
     padding: spacing.lg,
   },
 });
-

@@ -32,10 +32,10 @@ export default function QuizQuestion({navigation, route}) {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: quiz.backgroundColor}]}>
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.headerRow}>
-          <Text style={styles.quizTitle}>{quiz.title} Quiz</Text>
+          <Text style={[styles.quizTitle, {color: quiz.accentColor}]}>{quiz.title} Quiz</Text>
           <Text style={styles.progress}>Question {progress}</Text>
         </View>
 
@@ -43,12 +43,15 @@ export default function QuizQuestion({navigation, route}) {
           <View
             style={[
               styles.scoreFill,
-              {width: `${((questionIndex + 1) / totalQuestions) * 100}%`},
+              {
+                backgroundColor: quiz.accentColor,
+                width: `${((questionIndex + 1) / totalQuestions) * 100}%`,
+              },
             ]}
           />
         </View>
 
-        <View style={styles.card}>
+        <View style={[styles.card, {borderColor: quiz.accentColor}]}>
           <Image
             accessibilityIgnoresInvertColors
             resizeMode="cover"
@@ -126,14 +129,12 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   scoreFill: {
-    backgroundColor: colors.primary,
     height: '100%',
   },
   card: {
     backgroundColor: colors.panel,
-    borderColor: colors.border,
     borderRadius: radii.lg,
-    borderWidth: 1,
+    borderWidth: 2,
     maxWidth: 860,
     overflow: 'hidden',
     width: '100%',

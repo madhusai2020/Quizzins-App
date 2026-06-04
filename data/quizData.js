@@ -3,6 +3,8 @@ export const quizzes = [
     id: 'spanish',
     title: 'Spanish',
     description: 'Practice everyday Spanish words and phrases.',
+    accentColor: '#BF92E4',
+    backgroundColor: '#F1E5FF',
     imageUrl: 'https://t3.ftcdn.net/jpg/02/09/65/14/360_F_209651427_Moux8Hkey15wtMbtLymbPPrdrLhm58fH.jpg',
     questions: [
       {
@@ -31,6 +33,8 @@ export const quizzes = [
     id: 'math',
     title: 'Math',
     description: 'Solve quick arithmetic and reasoning problems.',
+    accentColor: '#7C3AED',
+    backgroundColor: '#EFE7FF',
     imageUrl: 'https://selfsufficientkids.com/wp-content/uploads/2017/07/multiplication-math-facts.jpg',
     questions: [
       {
@@ -59,6 +63,8 @@ export const quizzes = [
     id: 'science',
     title: 'Science',
     description: 'Explore nature, chemistry, and general science facts.',
+    accentColor: '#0284C7',
+    backgroundColor: '#E0F2FE',
     imageUrl: 'https://media.istockphoto.com/id/176982445/photo/ruby-xl.jpg?s=612x612&w=0&k=20&c=XjNZgXXR6ipGOVkSsV7UNnBbEaD48VbkB3wyKg-ArAk=',
     questions: [
       {
@@ -87,6 +93,8 @@ export const quizzes = [
     id: 'languageArts',
     title: 'Language Arts',
     description: 'Review vocabulary, grammar, and word meaning.',
+    accentColor: '#BE123C',
+    backgroundColor: '#FFE4E6',
     imageUrl: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=900&q=80',
     questions: [
       {
@@ -115,6 +123,8 @@ export const quizzes = [
     id: 'coding',
     title: 'Coding',
     description: 'Test basic programming and React Native knowledge.',
+    accentColor: '#475569',
+    backgroundColor: '#E2E8F0',
     imageUrl: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=80',
     questions: [
       {
@@ -143,6 +153,8 @@ export const quizzes = [
     id: 'basketball',
     title: 'Basketball',
     description: 'Check your basketball terms and rules.',
+    accentColor: '#EA580C',
+    backgroundColor: '#FFEDD5',
     imageUrl: 'https://media.istockphoto.com/id/1159659055/photo/high-school-basketball-game.jpg?s=612x612&w=0&k=20&c=eqc4czKTXf_ACQaSawBs_Tuc8Fcr4sHSOr6mKVUuoMc=',
     questions: [
       {
@@ -171,6 +183,8 @@ export const quizzes = [
     id: 'history',
     title: 'History',
     description: 'Review major events and historical knowledge.',
+    accentColor: '#92400E',
+    backgroundColor: '#FEF3C7',
     imageUrl: 'https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=900&q=80',
     questions: [
       {
@@ -199,6 +213,8 @@ export const quizzes = [
     id: 'movies',
     title: 'Movies',
     description: 'Try questions about popular films and movie facts.',
+    accentColor: '#7F1D1D',
+    backgroundColor: '#FEE2E2',
     imageUrl: 'https://images2.alphacoders.com/131/1315111.jpg',
     questions: [
       {
@@ -227,6 +243,8 @@ export const quizzes = [
     id: 'fruits',
     title: 'Fruits',
     description: 'Identify fruits and simple food facts.',
+    accentColor: '#15803D',
+    backgroundColor: '#DCFCE7',
     imageUrl: 'https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=900&q=80',
     questions: [
       {
@@ -256,4 +274,3 @@ export const quizzes = [
 export function getQuizById(quizId) {
   return quizzes.find((quiz) => quiz.id === quizId);
 }
-
